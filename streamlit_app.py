@@ -4,4 +4,6 @@ import streamlit as st
 st.title("My parents new healthy Diner")
 
 st.header("Breakfast Menu")
-st.markdown("Omega 3 & blueberry oatmeal <br> Kale, Spinach and Rocket smoothie <br> Hard-boiled free-range egg")
+st.write("Omega 3 & blueberry oatmeal")
+st.write("Kale, Spinach and Rocket smoothie")
+st.write("Hard-boiled free-range egg")
