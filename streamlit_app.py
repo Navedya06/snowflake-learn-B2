@@ -32,7 +32,7 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon"
 st.text(fruityvice_response)
 st.text(fruityvice_response.json()) #just writes the data to the screen
 
-fruityvice_normalized = pd.join_normalize(fruityvice_response.json()) #normalize the data
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) #normalize the data
 
 #print as table
 st.dataframe(fruityvice_normalized)
