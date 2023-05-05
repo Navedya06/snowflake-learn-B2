@@ -26,13 +26,18 @@ st. dataframe(fruits_to_show)
 
 
 #fetch data from API- Fruityvice
-
 st.header('Fruityvice Fruit Advice!')
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
-st.text(fruityvice_response.json()) #just writes the data to the screen
+#take input from user to send a GET request through API call
 
+fruit_choice = st.text_input('What fruit would you like to know about?', 'Kiwi')
+st.write('The user entered: ', fruit_choice)
+#pass user input into API call
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +fruit_choice)
+#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
+#st.text(fruityvice_response.json()) #just writes the data to the screen
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) #normalize the data
 
 #print as table
 st.dataframe(fruityvice_normalized)
+                             
