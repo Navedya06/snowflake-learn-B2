@@ -28,6 +28,6 @@ st. dataframe(fruits_to_show)
 #fetch data from API- Fruityvice
 
 st.header('Fruityvice Fruit Advice!')
-fuityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fuityvice_response)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
 st.text(fruityvice_response.json())
