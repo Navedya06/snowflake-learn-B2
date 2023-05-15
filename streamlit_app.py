@@ -50,6 +50,6 @@ st.header("The fruit load list contains:")
 st.dataframe(my_data_rows)
 
 # add secondary text input
-add_my_fruit = st.text_input('Waht fruit would you like to add?' .'jackfruit')
+add_my_fruit = st.text_input('Waht fruit would you like to add?' ,'jackfruit')
 st.write('Thanks for adding ', add_my_fruit)
 
