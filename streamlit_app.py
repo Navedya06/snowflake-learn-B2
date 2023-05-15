@@ -70,10 +70,10 @@ if st.button('Get Fruit Load List'):
 # st.header("The fruit load list contains:")
   st.dataframe(my_data_rows)
 
-  def insert_row_snowflake(new_fruit):
-    with my_cnx.cursor() as my_cur:
-      my_cur.execute("inerst into fruit_load_list values ('" + new_fruit + "')")
-      return "Thanks for adding " + new_fruit
+def insert_row_snowflake(new_fruit):
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("inerst into fruit_load_list values ('" + new_fruit + "')")
+    return "Thanks for adding " + new_fruit
 # add secondary text input
 add_my_fruit = st.text_input('Waht fruit would you like to add?')
 if st.button('Add a Fruit to the list'):
