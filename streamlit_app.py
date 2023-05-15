@@ -1,8 +1,9 @@
 # first py file.
 import streamlit as st
-import pandas as pd
-import requests
+# import pandas as pd
+# import requests
 import snowflake.connector
+from urllib.error import URLError
 
 st.title("My parents new healthy Diner")
 
@@ -27,21 +28,31 @@ st. dataframe(fruits_to_show)
 
 
 #fetch data from API- Fruityvice
-st.header('Fruityvice Fruit Advice!')
+# st.header('Fruityvice Fruit Advice!')
 #take input from user to send a GET request through API call
 
-fruit_choice = st.text_input('What fruit would you like to know about?', 'Kiwi')
-st.write('The user entered: ', fruit_choice)
-#pass user input into API call
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +fruit_choice)
-#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
-#st.text(fruityvice_response.json()) #just writes the data to the screen
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) #normalize the data
+# fruit_choice = st.text_input('What fruit would you like to know about?', 'Kiwi')
+# st.write('The user entered: ', fruit_choice)
 
-#print as table
-st.dataframe(fruityvice_normalized)
-                             
+
+
+# New Section
+st.header('Fruityvice Fruit Advice!')
+try:
+  fruit_choice = st.text_inpit('What fruit would you like information about?')
+  if not fruit_choice:
+    st.error('Please select a fruit to get inofrmation.')
+  else:
+    # pass user input into API call
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" +fruit_choice)
+    # fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+    # st.text(fruityvice_response.json()) #just writes the data to the screen
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) #normalize the data
+    # print as table
+    st.dataframe(fruityvice_normalized)
+except URLError as e:
+  st.error()
+
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
