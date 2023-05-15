@@ -72,12 +72,12 @@ if st.button('Get Fruit Load List'):
 
   def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
-      my_cur.execute("inerst into fruit_load_list values ('from streamlit')")
+      my_cur.execute("inerst into fruit_load_list values ('" + new_fruit + "')")
       return "Thanks for adding " + new_fruit
 # add secondary text input
 add_my_fruit = st.text_input('Waht fruit would you like to add?')
 if st.button('Add a Fruit to the list'):
-  my_ncx = snowflake.connecotr.connect(**st.secrets["snowflake"])
+  my_ncx = snowflake.connector.connect(**st.secrets["snowflake"])
   back_from_function = insert_row_snowflake(add_my_fruit)
   st.text(back_from_function)
 # st.write('Thanks for adding ', add_my_fruit)
