@@ -70,7 +70,15 @@ if st.button('Get Fruit Load List'):
 # st.header("The fruit load list contains:")
   st.dataframe(my_data_rows)
 
+  def inset _row_snowflake(new_fruit):
+    with my_cnx.cursor() as my_cur:
+      my_cur.execute("inerst into fruit_load_list values ('from streamlit')")
+      return "Thanks for adding " + new_fruit
 # add secondary text input
-add_my_fruit = st.text_input('Waht fruit would you like to add?' ,'jackfruit')
-st.write('Thanks for adding ', add_my_fruit)
+add_my_fruit = st.text_input('Waht fruit would you like to add?')
+if st.button('Add a Fruit to the list'):
+  my_ncx = snowflake.connecotr.connect(**st.secrets["snowflake"])
+  back_from_function = insert_row_snowflake(add_my_fruit)
+  st.text(back_from_function)
+# st.write('Thanks for adding ', add_my_fruit)
 
