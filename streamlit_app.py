@@ -39,7 +39,7 @@ st. dataframe(fruits_to_show)
 # New Section
 st.header('Fruityvice Fruit Advice!')
 try:
-  fruit_choice = st.text_inpit('What fruit would you like information about?')
+  fruit_choice = st.text_input('What fruit would you like information about?')
   if not fruit_choice:
     st.error('Please select a fruit to get inofrmation.')
   else:
